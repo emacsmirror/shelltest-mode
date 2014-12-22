@@ -1,4 +1,4 @@
-;;; shelltest-mode.el --- Major mode for shelltestrunner.
+;;; shelltest-mode.el --- Major mode for shelltestrunner
 
 ;; Copyright (C) 2014 Dustin Fechner
 
