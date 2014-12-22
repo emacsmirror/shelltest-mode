@@ -60,6 +60,7 @@
   :group 'shelltest-mode)
 
 ;; interactive functions
+;;;###autoload
 (defun shelltest-find ()
   "Edit the test file that corresponds to the currently edited file.
 
@@ -74,6 +75,7 @@ If `shelltest-other-window' is non-nil, open the file in another window."
         (find-file-other-window test)
       (find-file test))))
 
+;;;###autoload
 (defun shelltest-run ()
   "Run the test file associated with the currently edited file.
 
@@ -87,6 +89,7 @@ currently edited file with its extension removed."
                      (file-name-base (buffer-file-name)))))
     (compile cmd)))
 
+;;;###autoload
 (defun shelltest-run-all ()
   "Run all test files.
 
@@ -115,6 +118,7 @@ is `shelltest-directory'."
     (point)))
 
 ;; mode definition
+;;;###autoload
 (define-derived-mode shelltest-mode prog-mode "Shelltest"
   "Major mode for shelltestrunner.
 
@@ -124,6 +128,7 @@ See URL `http://joyful.com/shelltestrunner'."
   (setq-local compile-command (format "%s %s" shelltest-command (buffer-file-name)))
   (setq-local shelltest-directory (file-name-directory (buffer-file-name))))
 
+;;;###autoload
 (add-to-list 'auto-mode-alist '("\\.test\\'" . shelltest-mode))
 
 (provide 'shelltest-mode)
