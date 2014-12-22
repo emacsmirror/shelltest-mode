@@ -99,15 +99,15 @@ is `shelltest-directory'."
     (compile cmd)))
 
 ;; helper variables and functions
-(defconst shelltest-keywords
+(defconst shelltest--keywords
   '(("^>>>=" . font-lock-keyword-face)
     ("^\\(>>>2\\|>>>\\|<<<\\)$" (1 font-lock-keyword-face)
-     ("." (shelltest-end-of-string) nil (0 font-lock-string-face)))
+     ("." (shelltest--end-of-string) nil (0 font-lock-string-face)))
     ("^\\(>>>2\\|>>>\\)[^=].*" (1 font-lock-keyword-face)
-     ("." (shelltest-end-of-string) nil (0 font-lock-string-face)))
+     ("." (shelltest--end-of-string) nil (0 font-lock-string-face)))
     ("^#.*" . font-lock-comment-face)))
 
-(defun shelltest-end-of-string ()
+(defun shelltest--end-of-string ()
   (save-excursion
     (while (not (or (eobp)
                     (looking-at-p ">>>=\\|>>>2\\|>>>\\|<<<")))
@@ -120,7 +120,7 @@ is `shelltest-directory'."
 
 See URL `http://joyful.com/shelltestrunner'."
   (setq font-lock-multiline t)
-  (font-lock-add-keywords nil shelltest-keywords)
+  (font-lock-add-keywords nil shelltest--keywords)
   (setq-local compile-command (format "%s %s" shelltest-command (buffer-file-name)))
   (setq-local shelltest-directory (file-name-directory (buffer-file-name))))
 
