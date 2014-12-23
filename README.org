@@ -1,5 +1,7 @@
 #+TITLE: Shelltest Mode
 
+[[http://melpa.org/#/shelltest-mode][file:http://melpa.org/packages/shelltest-mode-badge.svg]]
+
 This package implements a major mode for [[http://joyful.com/shelltestrunner][shelltestrunner]].
 
 Besides syntax highlighting, a few useful functions for dealing with
@@ -8,7 +10,12 @@ be bound to keys for additional convenience.
 
 ** Installation
 
-TODO: write instructions
+Either install via [[http://melpa.org/#/shelltest-mode][MELPA]], or place =shelltest-mode.el= into your load
+path and do:
+
+#+BEGIN_SRC emacs-lisp
+(require 'shelltest-mode)
+#+END_SRC
 
 To load ~shelltest-mode~ for all *.test files, add the following to your
 Emacs init file:
