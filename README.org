@@ -66,11 +66,17 @@ The command that [[#shelltest-run][shelltest-run]] and [[#shelltest-run-all][she
 
 *** shelltest-directory
 
-/Default:/ ~​"./tests"​~
+/Default:/ ~​"./tests/"​~
 
 The directory in which the test files are located.
 
+Note that this should end with a directory separator.
+
 ** Changelog
+
+*** v1.1
+
+- Require [[#shelltest-directory][shelltest-directory]] to end with a directory separator.
 
 *** v1.0
 

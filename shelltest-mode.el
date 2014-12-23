@@ -54,8 +54,10 @@
   :type 'string
   :group 'shelltest-mode)
 
-(defcustom shelltest-directory "./tests"
-  "The directory in which the test files are located."
+(defcustom shelltest-directory "./tests/"
+  "The directory in which the test files are located.
+
+Note that this should end with a directory separator."
   :type 'string
   :group 'shelltest-mode)
 
@@ -64,11 +66,11 @@
 (defun shelltest-find ()
   "Edit the test file that corresponds to the currently edited file.
 
-The opened file is `shelltest-directory'/file.test, where \"file\" is the
-name of the currently edited file with its extension removed.
+The opened file is file.test in `shelltest-directory', where \`file\'
+is the name of the currently edited file with its extension removed.
 If `shelltest-other-window' is non-nil, open the file in another window."
   (interactive)
-  (let ((test (format "%s/%s.test"
+  (let ((test (format "%s%s.test"
                       shelltest-directory
                       (file-name-base (buffer-file-name)))))
     (if shelltest-other-window
@@ -80,12 +82,12 @@ If `shelltest-other-window' is non-nil, open the file in another window."
   "Run the test file associated with the currently edited file.
 
 The command to be run is determined by `shelltest-command'.  Its argument
-is `shelltest-directory'/file.test, where \`file\' is the name of the
-currently edited file with its extension removed."
+is `shelltest-directory' with file.test appended, where \`file\' is the name
+of the currently edited file with its extension removed."
   (interactive)
   (let ((compilation-buffer-name-function 'shelltest--buffer-name))
     (compile (shelltest--command-line
-              (format "%s/%s.test"
+              (format "%s%s.test"
                       shelltest-directory
                       (file-name-base (buffer-file-name)))))))
 
@@ -136,7 +138,7 @@ See URL `http://joyful.com/shelltestrunner'."
   (set (make-local-variable 'compile-command)
        (shelltest--command-line (buffer-file-name)))
   (set (make-local-variable 'shelltest-directory)
-       (directory-file-name (file-name-directory (buffer-file-name)))))
+       (file-name-directory (buffer-file-name))))
 
 (provide 'shelltest-mode)
 
