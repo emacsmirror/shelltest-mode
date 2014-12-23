@@ -83,10 +83,11 @@ The command to be run is determined by `shelltest-command'.  Its argument
 is `shelltest-directory'/file.test, where \`file\' is the name of the
 currently edited file with its extension removed."
   (interactive)
-  (compile (shelltest--command-line
-            (format "%s/%s.test"
-                    shelltest-directory
-                    (file-name-base (buffer-file-name))))))
+  (let ((compilation-buffer-name-function 'shelltest--buffer-name))
+    (compile (shelltest--command-line
+              (format "%s/%s.test"
+                      shelltest-directory
+                      (file-name-base (buffer-file-name)))))))
 
 ;;;###autoload
 (defun shelltest-run-all ()
@@ -95,7 +96,8 @@ currently edited file with its extension removed."
 The command to be run is determined by `shelltest-command'.  Its argument
 is `shelltest-directory'."
   (interactive)
-  (compile (shelltest--command-line shelltest-directory)))
+  (let ((compilation-buffer-name-function 'shelltest--buffer-name))
+    (compile (shelltest--command-line shelltest-directory))))
 
 ;; helper variables and functions
 (defconst shelltest--keywords
@@ -117,6 +119,9 @@ is `shelltest-directory'."
   (format "%s %s"
           shelltest-command
           (shell-quote-argument (expand-file-name file))))
+
+(defun shelltest--buffer-name (arg)
+  "*shelltest*")
 
 ;; mode definition
 ;;;###autoload
@@ -126,6 +131,8 @@ is `shelltest-directory'."
 See URL `http://joyful.com/shelltestrunner'."
   (setq font-lock-multiline t)
   (font-lock-add-keywords nil shelltest--keywords)
+  (set (make-local-variable 'compilation-buffer-name-function)
+       'shelltest--buffer-name)
   (set (make-local-variable 'compile-command)
        (shelltest--command-line (buffer-file-name)))
   (set (make-local-variable 'shelltest-directory)
