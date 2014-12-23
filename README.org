@@ -1,6 +1,7 @@
 #+TITLE: Shelltest Mode
 
 [[http://melpa.org/#/shelltest-mode][file:http://melpa.org/packages/shelltest-mode-badge.svg]]
+[[http://stable.melpa.org/#/shelltest-mode][file:http://stable.melpa.org/packages/shelltest-mode-badge.svg]]
 
 This package implements a major mode for [[http://joyful.com/shelltestrunner][shelltestrunner]].
 
@@ -68,3 +69,9 @@ The command that [[#shelltest-run][shelltest-run]] and [[#shelltest-run-all][she
 /Default:/ ~​"./tests"​~
 
 The directory in which the test files are located.
+
+** Changelog
+
+*** v1.0
+
+*Initial release.*
