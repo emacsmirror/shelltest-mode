@@ -83,11 +83,10 @@ The command to be run is determined by `shelltest-command'.  Its argument
 is `shelltest-directory'/file.test, where \`file\' is the name of the
 currently edited file with its extension removed."
   (interactive)
-  (let ((cmd (format "%s %s/%s.test"
-                     shelltest-command
-                     shelltest-directory
-                     (file-name-base (buffer-file-name)))))
-    (compile cmd)))
+  (compile (shelltest--command-line
+            (format "%s/%s.test"
+                    shelltest-directory
+                    (file-name-base (buffer-file-name))))))
 
 ;;;###autoload
 (defun shelltest-run-all ()
@@ -96,10 +95,7 @@ currently edited file with its extension removed."
 The command to be run is determined by `shelltest-command'.  Its argument
 is `shelltest-directory'."
   (interactive)
-  (let ((cmd (format "%s %s"
-                     shelltest-command
-                     shelltest-directory)))
-    (compile cmd)))
+  (compile (shelltest--command-line shelltest-directory)))
 
 ;; helper variables and functions
 (defconst shelltest--keywords
@@ -116,6 +112,11 @@ is `shelltest-directory'."
                     (looking-at-p ">>>=\\|>>>2\\|>>>\\|<<<")))
       (forward-line))
     (point)))
+
+(defun shelltest--command-line (file)
+  (format "%s %s"
+          shelltest-command
+          (shell-quote-argument (expand-file-name file))))
 
 ;; mode definition
 ;;;###autoload
@@ -125,11 +126,10 @@ is `shelltest-directory'."
 See URL `http://joyful.com/shelltestrunner'."
   (setq font-lock-multiline t)
   (font-lock-add-keywords nil shelltest--keywords)
-  (setq-local compile-command (format "%s %s" shelltest-command (buffer-file-name)))
-  (setq-local shelltest-directory (file-name-directory (buffer-file-name))))
-
-;;;###autoload
-(add-to-list 'auto-mode-alist '("\\.test\\'" . shelltest-mode))
+  (set (make-local-variable 'compile-command)
+       (shelltest--command-line (buffer-file-name)))
+  (set (make-local-variable 'shelltest-directory)
+       (directory-file-name (file-name-directory (buffer-file-name)))))
 
 (provide 'shelltest-mode)
 

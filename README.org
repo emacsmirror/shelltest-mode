@@ -10,6 +10,13 @@ be bound to keys for additional convenience.
 
 TODO: write instructions
 
+To load ~shelltest-mode~ for all *.test files, add the following to your
+Emacs init file:
+
+#+BEGIN_SRC emacs-lisp
+(add-to-list 'auto-mode-alist '("\\.test\\'" . shelltest-mode))
+#+END_SRC
+
 ** Functions
 
 *** shelltest-find
