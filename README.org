@@ -1,5 +1,6 @@
 #+TITLE: Shelltest Mode
 
+[[https://travis-ci.org/rtrn/shelltest-mode][https://travis-ci.org/rtrn/shelltest-mode.svg?branch=master]]
 [[http://melpa.org/#/shelltest-mode][file:http://melpa.org/packages/shelltest-mode-badge.svg]]
 [[http://stable.melpa.org/#/shelltest-mode][file:http://stable.melpa.org/packages/shelltest-mode-badge.svg]]
 
