@@ -78,6 +78,7 @@ Note that this should end with a directory separator.
 *** v1.1 (wip)
 
 - Require [[#shelltest-directory][shelltest-directory]] to end with a directory separator.
+- Fixed a bug in the syntax highlighting patterns.
 
 *** v1.0 (2014-12-23)
 

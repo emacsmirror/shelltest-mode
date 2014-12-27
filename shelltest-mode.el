@@ -106,7 +106,7 @@ is `shelltest-directory'."
   '(("^>>>=" . font-lock-keyword-face)
     ("^\\(>>>2\\|>>>\\|<<<\\)$" (1 font-lock-keyword-face)
      ("." (shelltest--end-of-string) nil (0 font-lock-string-face)))
-    ("^\\(>>>2\\|>>>\\)[^=].*" (1 font-lock-keyword-face)
+    ("^\\(>>>2\\|>>>\\)[^=\n].*" (1 font-lock-keyword-face)
      ("." (shelltest--end-of-string) nil (0 font-lock-string-face)))
     ("^#.*" . font-lock-comment-face)))
 
