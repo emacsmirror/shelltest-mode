@@ -75,7 +75,7 @@ Note that this should end with a directory separator.
 
 ** Changelog
 
-*** v1.1 (wip)
+*** v1.1 (2015-02-01)
 
 - Require [[#shelltest-directory][shelltest-directory]] to end with a directory separator.
 - Fix a bug in the syntax highlighting patterns.
