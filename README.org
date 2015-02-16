@@ -73,7 +73,7 @@ The directory in which the test files are located.
 
 Note that this should end with a directory separator.
 
-** Changelog
+** News
 
 *** v1.1 (2015-02-01)
 
