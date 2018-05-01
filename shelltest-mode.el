@@ -2,7 +2,7 @@
 
 ;; Copyright (C) 2014 Dustin Fechner
 
-;; Author: Dustin Fechner <fechnedu@gmail.com>
+;; Author: Dustin Fechner <dfe@rtrn.io>
 ;; URL: https://github.com/rtrn/shelltest-mode
 ;; Version: 1.1
 ;; Created: 21 Dec 2014
